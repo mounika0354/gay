@@ -4,11 +4,11 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - mvn test
+      - mvn clean prepare-package war:explode
   post_build:
     commands:
       - echo Build completed on `date`
-      - mvn package
+      - mv target/deploy ./
 artifacts:
   files:
-    - target/aws-build-sample-maven-project-0.0.1-SNAPSHOT.jar
+    - deploy/**/*
